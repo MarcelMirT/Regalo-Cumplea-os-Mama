@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Mamá 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --bg2: #EDEAE3;
+      --ink: #1C1917;
+      --ink2: #6B6560;
+      --ink3: #9C9790;
+      --accent: #C4773B;
+      --accent-light: #F0E0CC;
+      --card: #FFFFFF;
+      --border: rgba(28,25,23,0.09);
+      --youtube: #CC0000;
+      --spotify: #1DB954;
+      --radius: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px 64px;
+      text-align: center;
+      background: var(--bg);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 20%, rgba(196,119,59,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 85% 80%, rgba(196,119,59,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.1s ease forwards;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 8vw, 72px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.25s ease forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-note {
+      max-width: 520px;
+      margin: 0 auto 0;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--ink2);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s ease forwards;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+      margin: 32px auto;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.55s ease forwards;
+    }
+
+    /* ── CATEGORIES ── */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.6s; }
+    .section:nth-child(2) { animation-delay: 0.75s; }
+    .section:nth-child(3) { animation-delay: 0.9s; }
+    .section:nth-child(4) { animation-delay: 1.05s; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .section-count {
+      font-size: 12px;
+      color: var(--ink3);
+      font-weight: 400;
+      margin-left: auto;
+    }
+
+    /* ── CARDS ── */
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(28,25,23,0.08);
+      border-color: rgba(28,25,23,0.15);
+    }
+
+    .card:active {
+      transform: translateY(0);
+    }
+
+    .card-platform {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card-platform.youtube {
+      background: #FFEAEA;
+    }
+
+    .card-platform.spotify {
+      background: #E8F8EE;
+    }
+
+    .card-platform svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .card-type {
+      font-size: 12px;
+      color: var(--ink3);
+      font-weight: 300;
+    }
+
+    .card-arrow {
+      color: var(--ink3);
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: transform 0.18s ease, color 0.18s ease;
+    }
+
+    .card:hover .card-arrow {
+      transform: translateX(3px);
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      margin-top: 64px;
+      padding: 0 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s 1.2s ease forwards;
+    }
+
+    .footer-heart {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--ink3);
+      font-weight: 300;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 48px; }
+      .card { padding: 14px 15px; gap: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-label">✦ Feliz cumpleaños</div>
+    <h1 class="hero-title">Para <em>Mamá</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-note">Una primera recopilación de contenido cultural diverso del que escucho en YouTube y Spotify, para que puedas acceder a él de forma sencilla. Un abrazo y feliz cumpleaños. 🎂</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="container">
+
+    <!-- Historia & Cultura -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#FFF3E0; font-size:17px;">🏛️</div>
+        <span class="section-title">Historia &amp; Cultura</span>
+        <span class="section-count">2 canales</span>
+      </div>
+      <div class="cards">
+        <a class="card" href="https://www.youtube.com/watch?v=zYmH-59KakM" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">El Antiguo Egipto — Documental</div>
+            <div class="card-type">YouTube · Vídeo</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/playlist?list=PLuZwPfz6z4xU4nPcbKjA1wM_YSU7PH2W6" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">Historia — Lista de reproducción</div>
+            <div class="card-type">YouTube · Playlist</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Ciencia -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#E8F5E9; font-size:17px;">🔬</div>
+        <span class="section-title">Ciencia</span>
+        <span class="section-count">4 canales</span>
+      </div>
+      <div class="cards">
+        <a class="card" href="https://www.youtube.com/@ElRobotdePlaton" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">El Robot de Platón</div>
+            <div class="card-type">YouTube · Canal</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@QuantumFracture/" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">Quantum Fracture</div>
+            <div class="card-type">YouTube · Canal</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://open.spotify.com/show/5FpBuACKsfTWSptjLjbG8Y?si=c4e42a1cb5ba47ff" target="_blank" rel="noopener">
+          <div class="card-platform spotify">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="#1DB954"/><path d="M7 9.5c2.5-1.2 6.5-1.2 9 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 12c2-1 5.5-1 8 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 14.5c1.5-.7 4.5-.7 6 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">Podcast de Ciencia — Spotify #1</div>
+            <div class="card-type">Spotify · Podcast</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://open.spotify.com/show/4NYYG4lBDhMqzNgMc2jJW6?si=66723dd937154c52" target="_blank" rel="noopener">
+          <div class="card-platform spotify">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="#1DB954"/><path d="M7 9.5c2.5-1.2 6.5-1.2 9 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 12c2-1 5.5-1 8 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 14.5c1.5-.7 4.5-.7 6 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">Podcast de Ciencia — Spotify #2</div>
+            <div class="card-type">Spotify · Podcast</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Inteligencia Artificial -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#EDE7F6; font-size:17px;">🤖</div>
+        <span class="section-title">Inteligencia Artificial</span>
+        <span class="section-count">2 canales</span>
+      </div>
+      <div class="cards">
+        <a class="card" href="https://www.youtube.com/@gustavo-entrala" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">Gustavo Entrala</div>
+            <div class="card-type">YouTube · Canal</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@la_inteligencia_artificial" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">La Inteligencia Artificial</div>
+            <div class="card-type">YouTube · Canal</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Viajes -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#E3F2FD; font-size:17px;">✈️</div>
+        <span class="section-title">Viajes</span>
+        <span class="section-count">2 canales</span>
+      </div>
+      <div class="cards">
+        <a class="card" href="https://www.youtube.com/@charlysinewan" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">Charly Sin Ewan</div>
+            <div class="card-type">YouTube · Canal</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@lethalcrysis" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">LethalCrysis</div>
+            <div class="card-type">YouTube · Canal</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Entrevistas -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:#FBE9E7; font-size:17px;">🎙️</div>
+        <span class="section-title">Entrevistas</span>
+        <span class="section-count">1 canal</span>
+      </div>
+      <div class="cards">
+        <a class="card" href="https://www.youtube.com/@Loquetudigas" target="_blank" rel="noopener">
+          <div class="card-platform youtube">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#CC0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-name">Lo Que Tú Digas</div>
+            <div class="card-type">YouTube · Canal</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-heart">♡</div>
+    <p class="footer-text">Hecho con cariño · 2025</p>
+  </footer>
+
+</body>
+</html>
